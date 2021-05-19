@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 import apiResponse from '../services/ApiRequestService';
 import Controls from '../components/presentation/Controls';
 import Output from '../components/presentation/Output';
+import History from '../components/history/History';
 
 export default class RestyContainer extends Component {
     state = {
         url: '',
-        method: 'GET',
         body: '',
-        results: {},
-        
+        results: [],
+        searches: [],
+        method: '',
     };
 
     handleSubmit = (e) => {
@@ -22,6 +23,14 @@ export default class RestyContainer extends Component {
             .then(results => {
                 this.setState({ results });
               })
+            .then(
+              this.setState(state => ({
+                searches: [
+                  ...state.searches,
+                {url: state.url, method: state.method}
+                ]
+              }))
+            );
     }
 
     handleChange = ({ target }) => {
@@ -30,11 +39,11 @@ export default class RestyContainer extends Component {
     }
 
     render() {
-        const {url, method, body, results } = this.state;
+        const {url, method, body, results, searches } = this.state;
       
       return (
       <div> 
-        
+        <h1><History searches={searches}/> </h1>
         <Controls 
         url={url}
         method={method}

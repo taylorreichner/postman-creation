@@ -20,31 +20,40 @@ const Controls = ({
             placeholder="URL"
 
             />
-        <label>GET</label>
+        <label htmlFor="method">GET</label>
             <input
-            id="method"
+            id="GET"
             type="radio"
             name="method"
             value="GET"
             onChange={onChange}
-            checked
+            
             />
-        <label>DELETE</label>
+        <label htmlFor="method">DELETE</label>
             <input 
-            id="method"
+            id="DELETE"
             type="radio"
             name="method"
             value="DELETE"
             onChange={onChange}
             />
-        <label>POST</label>
+        <label htmlFor="method" >POST</label>
             <input 
-            id="method"
+            id="POST"
             type="radio"
             name="method"
             value="POST"
             onChange={onChange}
             />
+             <label htmlFor="method">PUT</label>
+            <input 
+            id="PUT"
+            type="radio"
+            name="method"
+            value="PUT"
+            onChange={onChange}
+            />
+          
         <button type="submit">Submit</button>
         
         </form>
